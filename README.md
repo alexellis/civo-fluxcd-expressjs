@@ -24,6 +24,10 @@ In this tutorial I'll show you how to build a GitOps pipeline for a Node.js appl
 
 At the end of the tutorial, every new version of our app will be automatically updated in the cluster. What's more, if we delete our cluster by accident, we can recover quickly because all of our resources are defined in our Git repository. This means we can easily re-create them in a new cluster.
 
+![Production users](/docs/prod-users.png)
+
+> Image: production users of Flux, from the Flux deep-dive by [Stefan Prodan](https://github.com/stefanprodan/)
+
 Flux is one of the best-known tools for CD within the [CNCF landscape](https://landscape.cncf.io) and has been the topic for many sessions, tutorials, and workshops at [KubeCon](https://www.cncf.io).
 
 ![CNCF Landscape](/docs/cncf.png)
@@ -34,7 +38,7 @@ You may enjoy this video session from KubeCon: [Panel: GitOps User Stories with 
 
 ## Tutorial
 
-This tutorial should take around 1-2 hours and requires an immediate to advanced level of knowledge. If this seems like too much, then the previous tutorial in the series on [creating the Helm3 chart we use in this tutorial](https://www.civo.com/learn/guide-to-helm-3-with-an-express-js-microservice), may be a better place to begin the journey.
+If you have an intermediate to advanced level of experience with Kubernetes and Helm, then this tutorial may take you around 1-2 hours. A tutorial for beginners and new-comers to Kubernetes is also available and a good pre-work for this tutorial: [Guide to Helm 3 With an Express.js Microservice](https://www.civo.com/learn/guide-to-helm-3-with-an-express-js-microservice).
 
 ### Get a Kubernetes cluster
 
