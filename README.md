@@ -107,11 +107,13 @@ fluxctl is the CLI to control and configure flux on your cluster.
     choco install kubernetes-helm fluxctl
     ```
 
-* Install the HelmRelease Kubernetes custom resource definition:
+* Install the HelmRelease Kubernetes Custom Resource Definition (or CRD):
 
     ```sh
     kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/master/deploy/flux-helm-release-crd.yaml
     ```
+
+    [Custom Resource Definitions](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/#customresourcedefinitions) allow developers to create their own objects with custom schemas for Kubernetes. This CRD represents a Helm chart release, but other CRDs may represent functions, such as [in OpenFaaS and its Operator](https://blog.alexellis.io/introducing-the-openfaas-operator/).
 
 * Install Flux and the Helm Operator
 
@@ -124,7 +126,7 @@ fluxctl is the CLI to control and configure flux on your cluster.
 * Create a namespace for flux
 
     ```sh
-    kubectl create ns fluxcd
+    kubectl create namespace fluxcd
     ```
 
 * Install fluxcd and point it at your fork of my repo
@@ -389,9 +391,9 @@ kubectl logs -n fluxcd deploy/helm-operator
 
 ## Wrapping up
 
-We now have an example of how to deploy our Express.js application to Kubernetes continuously.
+We now have an example of how to continuously deploy our Express.js application to our Kubernetes cluster of choice.
 
-Note that whilst the helm operator is currently included in the Flux GitHub repository, it will be extracted to a separate component later, and Flux can be used to apply any kind of Kubernetes objects and CRDs.
+Note that whilst the helm operator is currently included in the [Flux GitHub repository](https://github.com/fluxcd/flux), it will be extracted to a separate component later, and Flux can be used to apply any kind of Kubernetes objects and CRDs.
 
 If you want to use secrets with your application, you can encrypt them using [SealedSecrets](https://github.com/bitnami-labs/sealed-secrets), a project from [Bitnami Labs](https://github.com/bitnami-labs). You can even deploy OpenFaaS and a set of OpenFaaS functions using the HelmRelease Operator, see this great tutorial by one of the Flux maintainers ([Stefan Prodan](https://github.com/stefanprodan)) for more: [Applying GitOps to OpenFaaS with Flux Helm Operator
 ](https://www.openfaas.com/blog/openfaas-flux/).
