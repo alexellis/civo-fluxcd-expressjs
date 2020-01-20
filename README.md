@@ -375,20 +375,32 @@ Run the `port-forward` command from earlier and then open a browser:
 
 ![Updated site](/docs/updated-site.png)
 
-From here, it's over to you to build your own applications and deploy them to your Kubernetes cluster using the power of Flux and Continuous Delivery. Read on for how to troubleshoot and for the conclusion.
+From here, it's over to you to build your own applications and deploy them to your Kubernetes cluster using the power of Flux and Continuous Delivery.
 
 ### Troubleshooting
 
-You can troubleshoot flux like this:
+You can troubleshoot flux by looking at its logs like this:
 
 ```sh
 kubectl logs -n fluxcd deploy/flux
 ```
 
-And the helm Operator like this:
+And you can get the logs of the Helm Operator like this:
 
 ```sh
 kubectl logs -n fluxcd deploy/helm-operator
+```
+
+The Helm Operator applies its own CRD called `HelmRelease`, you can find this resource with:
+
+```sh
+kubectl get HelmRelease --all-namespaces
+```
+
+For any named release, you can then describe it, for more details and events:
+
+```sh
+kubectl describe helmrelease/expressjs-k8s -n default
 ```
 
 ## Wrapping up
@@ -399,5 +411,11 @@ Note that whilst the helm operator is currently included in the [Flux GitHub rep
 
 If you want to use secrets with your application, you can encrypt them using [SealedSecrets](https://github.com/bitnami-labs/sealed-secrets), a project from [Bitnami Labs](https://github.com/bitnami-labs). You can even deploy OpenFaaS and a set of OpenFaaS functions using the HelmRelease Operator, see this great tutorial by one of the Flux maintainers ([Stefan Prodan](https://github.com/stefanprodan)) for more: [Applying GitOps to OpenFaaS with Flux Helm Operator
 ](https://www.openfaas.com/blog/openfaas-flux/).
+
+See also:
+
+* [Flagger - Progressive Delivery Operator for Kubernetes using Flux](https://flagger.app)
+* [Applying GitOps to OpenFaaS with Flux Helm Operator](https://www.openfaas.com/blog/openfaas-flux/)
+* [Deep Dive: Flux the GitOps Operator for Kubernetes - Stefan Prodan, Weaveworks](https://www.youtube.com/watch?v=Fs_Oz-RzWWI)
 
 To find out more about Flux and to connect with its community, see [the project homepage](https://fluxcd.io).
