@@ -24,13 +24,17 @@ In this tutorial I'll show you how to build a GitOps pipeline for a Node.js appl
 
 At the end of the tutorial, every new version of our app will be automatically updated in the cluster. What's more, if we delete our cluster by accident, we can recover in a short period of time since Git remains the source of truth.
 
-Flux is one of the best-known tools for CD within the CNCF landscape and has been the topic for many sessions, tutorials, and workshops at KubeCon.
+Flux is one of the best-known tools for CD within the [CNCF landscape](https://landscape.cncf.io) and has been the topic for many sessions, tutorials, and workshops at [KubeCon](https://www.cncf.io).
+
+![CNCF Landscape](/docs/cncf.png)
 
 There are other tools available for continuous deployment including [Argo](https://argoproj.github.io) from [Intuit](https://www.intuit.com). Argo may be more suited to developers who prefer a graphical dashboard and visualisation of their cluster state. There is some good news though, Argo and Flux will be merging some core components, so watch this space.
 
 You may enjoy this video session from KubeCon: [Panel: GitOps User Stories with Weaveworks and Intuit](https://www.youtube.com/watch?v=ogw6_Y3WBQs)
 
 ## Tutorial
+
+This tutorial should take around 1-2 hours and requires an immediate to advanced level of knowledge. If this seems like too much, then the previous tutorial in the series on [creating the Helm3 chart we use in this tutorial](https://www.civo.com/learn/guide-to-helm-3-with-an-express-js-microservice), may be a better place to begin the journey.
 
 ### Get a Kubernetes cluster
 
@@ -57,7 +61,7 @@ kubectl config get-contexts
 kubectl get node -o wide
 ```
 
-### Get helm 3
+### Get Helm 3
 
 If you're using MacOS or Linux simply run the below:
 
@@ -99,7 +103,7 @@ fluxctl is the CLI to control and configure flux on your cluster.
 
     On Windows you can use [Chocolatey](https://chocolatey.org):
 
-    ```
+    ```sh
     choco install kubernetes-helm fluxctl
     ```
 
@@ -113,19 +117,19 @@ fluxctl is the CLI to control and configure flux on your cluster.
 
     Add FluxCD repository to Helm repos:
 
-    ```
+    ```sh
     helm repo add fluxcd https://charts.fluxcd.io
     ```
 
 * Create a namespace for flux
 
-    ```
+    ```sh
     kubectl create ns fluxcd
     ```
 
 * Install fluxcd and point it at your fork of my repo
 
-    ```
+    ```sh
     export USER="alexellis"
     helm upgrade -i flux fluxcd/flux --wait \
     --namespace fluxcd \
@@ -136,7 +140,7 @@ fluxctl is the CLI to control and configure flux on your cluster.
 
     > Open GitHub, navigate to your repository, go to Settings > Deploy keys click on Add deploy key, check Allow write access, paste the Flux public key and click Add key.
 
-    ```
+    ```sh
     kubectl -n fluxcd logs deployment/flux | grep identity.pub | cut -d '"' -f2
     ```
 
@@ -146,7 +150,7 @@ fluxctl is the CLI to control and configure flux on your cluster.
 
     The helm release operator installs a release of a helm chart to your cluster.
 
-    ```
+    ```sh
     helm upgrade -i helm-operator fluxcd/helm-operator --wait \
     --namespace fluxcd \
     --set git.ssh.secretName=flux-git-deploy \
@@ -203,7 +207,7 @@ The values file can be used to control versions of Docker images or other settin
 
 Verify that the application was applied:
 
-```
+```sh
 $ fluxctl sync --k8s-fwd-ns fluxcd
 
 Synchronizing with ssh://git@github.com/alexellis/k8s-expressjs-flux.git
@@ -214,7 +218,7 @@ Done.
 
 After syncing, we'll now see the HelmRelease custom resources created:
 
-```
+```sh
 kubectl get helmrelease  -A
 
 NAMESPACE   NAME            RELEASE                 STATUS     MESSAGE                       AGE
@@ -326,11 +330,11 @@ Now we can push a new version of the expressjs-k8s Docker image, i.e. from versi
 
 Here's our list of Git commits, we can see that Flux made a successful patch to the config repo.
 
-![]()
+![Commits](/docs/commits.png)
 
 This is the code diff
 
-![]()
+![The code diff](/docs/diff.png)
 
 And we can also see the updated version and HelmRelease in the cluster:
 
