@@ -1,4 +1,4 @@
-# GitOps for Node.js and Express.js using Helm3 and Flux
+# GitOps using Helm3 and Flux for an Node.js and Express.js Microservice
 
 In this tutorial I'll show you how to build a GitOps pipeline for a Node.js application built with Express.js. The application was created in an earlier tutorial named: [Guide to Helm 3 With an Express.js Microservice](https://www.civo.com/learn/guide-to-helm-3-with-an-express-js-microservice). Rather than deploying new versions manually, flux will deploy it to Kubernetes whenever a build of the Docker image is available.
 
