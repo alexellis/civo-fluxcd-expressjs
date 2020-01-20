@@ -12,7 +12,7 @@ In this tutorial I'll show you how to build a GitOps pipeline for a Node.js appl
 
 * [A free GitHub account](https://github.com/) for Flux to monitor your config repo
 
-* [Flux CD](https://github.com/fluxcd) was created by [Weaveworks](https://www.weave.works) and is now hosted within the Cloud Native Computing Foundation, a neutral home for OSS
+* [Flux CD](https://github.com/fluxcd) was created by [Weaveworks](https://www.weave.works) and is now hosted within the Cloud Native Computing Foundation, a neutral home for OSS. Flux can apply Kubernetes manifest YAML files to your cluster from a Git repository. Its true power comes in being able to bump the versions of images as they are produced by your CI system.
 
 * [Helm3](https://helm.sh) is the successor to Helm 2 and tightens-up security
 
