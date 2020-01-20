@@ -276,6 +276,8 @@ Or view the main website in a browser:
 
 Notice the Copyright is set to 2019, that won't do since we're now in 2020 at time of writing.
 
+In the following steps we'll update the code and then publish a new Docker image. The way we're currently using Flux would need us to update our chart, republish it and then update flux's config repo. You'll see how to make this all automatic through the use of Semantic Versioning. 
+
 ### Automate deployments for new versions
 
 Now Flux can apply our HelmRelease definition automatically, and the Helm Operator will then install the chart, but there's more we can do.
