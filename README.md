@@ -18,11 +18,11 @@ In this tutorial I'll show you how to build a GitOps pipeline for a Node.js appl
 
 * [Flux Helm Operator](https://github.com/fluxcd/helm-operator) - the Helm operator is not required for use with Flux, but makes a good pairing, so that Flux applies a custom resource, and then the helm operator installs the selected version of the chart.
 
-* [Express.js](https://expressjs.com) is one of the most popular microservices frameworks for Node.js and makes it easy to define APIs, add authentication, integrate with middleware, and to server static sites. 
+* [Express.js](https://expressjs.com) is one of the most popular microservices frameworks for Node.js and makes it easy to define APIs, add authentication, integrate with middleware, and to serve static sites. 
 
 ### Why FluxCD and what are the alternatives?
 
-At the end of the tutorial, every new version of our app will be automatically updated in the cluster. What's more, if we delete our cluster by accident, we can recover in a short period of time since Git remains the source of truth.
+At the end of the tutorial, every new version of our app will be automatically updated in the cluster. What's more, if we delete our cluster by accident, we can recover quickly because all of our resources are defined in our Git repository. This means we can easily re-create them in a new cluster.
 
 Flux is one of the best-known tools for CD within the [CNCF landscape](https://landscape.cncf.io) and has been the topic for many sessions, tutorials, and workshops at [KubeCon](https://www.cncf.io).
 
