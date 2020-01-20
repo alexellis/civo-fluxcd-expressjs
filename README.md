@@ -367,6 +367,12 @@ NAME                    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS      I
 default-expressjs-k8s   1/1     1            1           31m   expressjs-k8s   alexellis2/service:0.3.6
 ```
 
+Run the `port-forward` command from earlier and then open a browser:
+
+![Updated site](/docs/updated-site.png)
+
+From here, it's over to you to build your own applications and deploy them to your Kubernetes cluster using the power of Flux and Continuous Delivery. Read on for how to troubleshoot and for the conclusion.
+
 ### Troubleshooting
 
 You can troubleshoot flux like this:
