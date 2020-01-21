@@ -73,7 +73,11 @@ If you're using MacOS or Linux simply run the below:
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
-If you're a Windows user, then install [Git Bash](https://git-scm.com/downloads) and then run the above in a new terminal.
+If you're a Windows user, then install [Git Bash](https://git-scm.com/downloads) and then run the above in a new terminal, or try [Chocolatey](https://chocolatey.org):
+
+```sh
+choco install kubernetes-helm
+```
 
 Check the installation:
 
@@ -102,13 +106,13 @@ fluxctl is the CLI to control and configure flux on your cluster.
 * Install Helm v3 and fluxctl for macOS with [Homebrew](https://brew.sh):
 
     ```sh
-    brew install helm fluxctl
+    brew install fluxctl
     ```
 
     On Windows you can use [Chocolatey](https://chocolatey.org):
 
     ```sh
-    choco install kubernetes-helm fluxctl
+    choco install fluxctl
     ```
 
 * Install the HelmRelease Kubernetes Custom Resource Definition (or CRD):
