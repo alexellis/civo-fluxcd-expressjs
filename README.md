@@ -336,7 +336,7 @@ What did we change to automate release bumping?
 * `filter.fluxcd.io/chart-image: semver:~0.3` was added to update any images that have a patch release for 0.3, but if we want to move to 0.4, we'd have to update the string to match that.
 * `image: alexellis2/service:0.3.5` we added to the values, which represents `values.yaml` in a normal, manual Helm installation
 
-Now we can push a new version of the expressjs-k8s Docker image, i.e. from version `alexellis2/service:0.3.5` to `alexellis2/service:0.3.5`. This matches our semver notation of `~0.3`.
+Now we can push a new version of the expressjs-k8s Docker image, i.e. from version `alexellis2/service:0.3.5` to `alexellis2/service:0.3.6`. This matches our semver notation of `~0.3`.
 
 ### See flux in action
 
